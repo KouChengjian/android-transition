@@ -1,2 +1,2 @@
 # androidtransition
-transition
+android 过度效果
