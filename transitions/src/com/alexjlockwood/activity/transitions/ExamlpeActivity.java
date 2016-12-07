@@ -70,6 +70,7 @@ public class ExamlpeActivity extends Activity{
 	}
 
 	private class CardHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+		
 		private final ImageView mAlbumImage;
 		private int mAlbumPosition;
 

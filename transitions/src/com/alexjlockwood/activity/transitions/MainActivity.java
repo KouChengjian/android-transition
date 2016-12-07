@@ -162,7 +162,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			// starting activity twice?
-			Intent intent = new Intent(MainActivity.this, TestActivity.class);
+			Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
 			intent.putExtra(EXTRA_STARTING_ALBUM_POSITION, mAlbumPosition);
 
 			if (!mIsDetailsActivityStarted) {

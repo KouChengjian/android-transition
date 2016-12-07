@@ -69,6 +69,15 @@ public class TestActivity extends Activity{
         albumImageRequest.noFade();
         albumImageRequest.into(backgroundImage, mImageCallback);
         
+//        mAlbumImage.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+//            @Override
+//            public boolean onPreDraw() {
+//                mAlbumImage.getViewTreeObserver().removeOnPreDrawListener(this);
+//                TestActivity.this.startPostponedEnterTransition();
+//                return true;
+//            }
+//        });
+        
 //        RequestCreator backgroundImageRequest = Picasso.with(this).load(backgroundImageUrl).fit().centerCrop();
 //		backgroundImageRequest.noFade();
 //		backgroundImage.setAlpha(0f);
@@ -97,41 +106,41 @@ public class TestActivity extends Activity{
 	@TargetApi(21)
     public void startPostponedEnterTransition() {
         //if (mAlbumPosition == mStartingPosition) {
-            mAlbumImage.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-                @Override
-                public boolean onPreDraw() {
-                    mAlbumImage.getViewTreeObserver().removeOnPreDrawListener(this);
-                    TestActivity.this.startPostponedEnterTransition();
-                    return true;
-                }
-            });
+//            mAlbumImage.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+//                @Override
+//                public boolean onPreDraw() {
+//                    mAlbumImage.getViewTreeObserver().removeOnPreDrawListener(this);
+//                    TestActivity.this.startPostponedEnterTransition();
+//                    return true;
+//                }
+//            });
         //}
     }
 	
-	@SuppressLint("NewApi")
-	private final SharedElementCallback mCallback = new SharedElementCallback() {
-        @Override
-        public void onMapSharedElements(List<String> names, Map<String, View> sharedElements) {
-            if (mIsReturning) {
-                ImageView sharedElement = mAlbumImage;
-                if (sharedElement == null) {
-                    // If shared element is null, then it has been scrolled off screen and
-                    // no longer visible. In this case we cancel the shared element transition by
-                    // removing the shared element from the shared elements map.
-                    names.clear();
-                    sharedElements.clear();
-                } else if (mStartingPosition != mCurrentPosition) {
-                    // If the user has swiped to a different ViewPager page, then we need to
-                    // remove the old shared element and replace it with the new shared element
-                    // that should be transitioned instead.
-                    names.clear();
-                    names.add(sharedElement.getTransitionName());
-                    sharedElements.clear();
-                    sharedElements.put(sharedElement.getTransitionName(), sharedElement);
-                }
-            }
-        }
-    };
+//	@SuppressLint("NewApi")
+//	private final SharedElementCallback mCallback = new SharedElementCallback() {
+//        @Override
+//        public void onMapSharedElements(List<String> names, Map<String, View> sharedElements) {
+//            if (mIsReturning) {
+//                ImageView sharedElement = mAlbumImage;
+//                if (sharedElement == null) {
+//                    // If shared element is null, then it has been scrolled off screen and
+//                    // no longer visible. In this case we cancel the shared element transition by
+//                    // removing the shared element from the shared elements map.
+//                    names.clear();
+//                    sharedElements.clear();
+//                } else if (mStartingPosition != mCurrentPosition) {
+//                    // If the user has swiped to a different ViewPager page, then we need to
+//                    // remove the old shared element and replace it with the new shared element
+//                    // that should be transitioned instead.
+//                    names.clear();
+//                    names.add(sharedElement.getTransitionName());
+//                    sharedElements.clear();
+//                    sharedElements.put(sharedElement.getTransitionName(), sharedElement);
+//                }
+//            }
+//        }
+//    };
     
     @SuppressLint("NewApi")
 	private final Callback mImageCallback = new Callback() {
